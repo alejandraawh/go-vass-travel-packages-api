@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose=require("mongoose");
+var cors=require("cors");
 require("dotenv").config();
 const travelRoutes = require("./routes/travel");
 const advertisingRoutes = require("./routes/advertising");
@@ -8,6 +9,7 @@ const port= process.env.PORT || 9000;
 
 //middleware
 app.use(express.json());
+app.use(cors());
 app.use('/govass/packages',travelRoutes)
 app.use('/govass/advertising',advertisingRoutes)
 //routes
