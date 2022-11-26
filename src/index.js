@@ -1,10 +1,15 @@
-const express = require('express');
-const mongoose=require('mongoose');
+const express = require("express");
+const mongoose=require("mongoose");
 require("dotenv").config();
-
+const travelRoutes = require("./routes/travel");
+const advertisingRoutes = require("./routes/advertising");
 const app = express();
 const port= process.env.PORT || 9000;
 
+//middleware
+app.use(express.json());
+app.use('/govass/packages',travelRoutes)
+app.use('/govass/advertising',advertisingRoutes)
 //routes
 app.get('/',(req,res)=>{
     res.send('API');
